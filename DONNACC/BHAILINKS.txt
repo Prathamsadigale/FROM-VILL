@@ -2,4 +2,7 @@ BASIC IMPLEMENTATION :
 
 https://github.com/SUJALDALVI/dejavu.git
 
+VERSION CHECK :
+python --version
 
+python3 --version
