@@ -1,0 +1,445 @@
+Implement Greedy search algorithm (Sorting, Prims Algorithm, Kruskal Algorithm)
+
+CODE :
+
+import heapq
+
+# ---------------------------------
+# SELECTION SORT
+# ---------------------------------
+
+def selection_sort(arr):
+
+    n = len(arr)
+
+    for i in range(n):
+
+        min_index = i
+
+        for j in range(i + 1, n):
+
+            if arr[j] < arr[min_index]:
+                min_index = j
+
+        # swapping
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+    return arr
+
+
+# ---------------------------------
+# PRIM'S ALGORITHM
+# ---------------------------------
+
+graph = {
+    'A': [('B', 2), ('C', 4)],
+    'B': [('A', 2), ('C', 1), ('D', 7)],
+    'C': [('A', 4), ('B', 1), ('D', 3)],
+    'D': [('B', 7), ('C', 3)]
+}
+
+def prims(graph, start):
+
+    visited = []
+
+    min_heap = [(0, start)]
+
+    total_cost = 0
+
+    print("\nPRIM'S ALGORITHM:\n")
+
+    while min_heap:
+
+        weight, node = heapq.heappop(min_heap)
+
+        if node not in visited:
+
+            visited.append(node)
+
+            total_cost += weight
+
+            print("Selected Node :", node,
+                  "| Cost :", weight)
+
+            for neighbor, edge_weight in graph[node]:
+
+                if neighbor not in visited:
+                    heapq.heappush(min_heap,
+                                   (edge_weight, neighbor))
+
+    print("\nTotal Minimum Cost =", total_cost)
+
+
+# ---------------------------------
+# KRUSKAL ALGORITHM
+# ---------------------------------
+
+edges = [
+    ['B', 'C', 1],
+    ['A', 'B', 2],
+    ['C', 'D', 3],
+    ['A', 'C', 4],
+    ['B', 'D', 7]
+]
+
+def kruskal(edges):
+
+    visited = []
+
+    total_cost = 0
+
+    print("\nKRUSKAL ALGORITHM:\n")
+
+    for edge in edges:
+
+        u = edge[0]
+        v = edge[1]
+        weight = edge[2]
+
+        # simple cycle checking
+        if u not in visited or v not in visited:
+
+            print(u, "-", v,
+                  "| Weight =", weight)
+
+            total_cost += weight
+
+            visited.append(u)
+            visited.append(v)
+
+    print("\nTotal Minimum Cost =", total_cost)
+
+
+# ---------------------------------
+# MAIN PROGRAM
+# ---------------------------------
+
+# SORTING
+arr = [64, 25, 12, 22, 11]
+
+print("ORIGINAL ARRAY:")
+print(arr)
+
+sorted_array = selection_sort(arr)
+
+print("\nSORTED ARRAY:")
+print(sorted_array)
+
+
+# PRIM'S ALGORITHM
+prims(graph, 'A')
+
+
+# KRUSKAL ALGORITHM
+kruskal(edges)
+
+
+🎯 AIM
+To implement Selection Sort, Prim’s Algorithm, and Kruskal’s Algorithm using Python and analyze sorting and minimum spanning tree techniques.
+
+🎯 OBJECTIVE
+
+
+To understand Selection Sort algorithm
+
+
+To implement Prim’s Algorithm for Minimum Spanning Tree (MST)
+
+
+To implement Kruskal’s Algorithm for MST
+
+
+To study graph traversal using greedy techniques
+
+
+To compare sorting and graph optimization algorithms
+
+
+
+📘 THEORY
+Selection Sort is a simple sorting algorithm that repeatedly selects the minimum element from the unsorted part of the array and places it in the correct position.
+Prim’s Algorithm is a greedy algorithm used to find the Minimum Spanning Tree (MST) of a weighted graph. It starts from a node and repeatedly selects the minimum weighted edge connecting visited and unvisited nodes.
+Kruskal’s Algorithm is another greedy algorithm for finding MST. It sorts edges by weight and adds the smallest edge while avoiding cycles.
+In this practical, Python was used to implement sorting and graph algorithms. heapq module was used in Prim’s Algorithm to efficiently retrieve the minimum weighted edge.
+
+✅ CONCLUSION
+Selection Sort, Prim’s Algorithm, and Kruskal’s Algorithm were successfully implemented in Python. Selection Sort arranged array elements in ascending order, while Prim’s and Kruskal’s Algorithms generated the Minimum Spanning Tree with minimum total cost. This practical helped in understanding greedy algorithms, sorting techniques, graph optimization, and priority queue operations.
+
+🧠 LINE-BY-LINE CODE EXPLANATION
+
+🔹 Import Heap Queue
+import heapq
+👉 Imports priority queue module for Prim’s Algorithm.
+
+==================================================
+🔹 SELECTION SORT
+==================================================
+
+🔹 Function Definition
+def selection_sort(arr):
+👉 Defines Selection Sort function.
+
+🔹 Length of Array
+n = len(arr)
+👉 Stores size of array.
+
+🔹 Outer Loop
+for i in range(n):
+👉 Traverses array positions.
+
+🔹 Assume Minimum Element
+min_index = i
+👉 Current element assumed minimum.
+
+🔹 Inner Loop
+for j in range(i + 1, n):
+👉 Searches smaller element.
+
+🔹 Compare Elements
+if arr[j] < arr[min_index]:
+👉 Finds smaller value.
+
+🔹 Update Minimum Index
+min_index = j
+👉 Updates smallest element position.
+
+🔹 Swapping
+arr[i], arr[min_index] = arr[min_index], arr[i]
+👉 Swaps elements.
+
+🔹 Return Sorted Array
+return arr
+👉 Returns sorted array.
+
+==================================================
+🔹 PRIM'S ALGORITHM
+==================================================
+
+🔹 Graph Representation
+graph = {
+👉 Weighted graph stored as adjacency list.
+
+🔹 Prim’s Function
+def prims(graph, start):
+👉 Defines Prim’s Algorithm.
+
+🔹 Visited List
+visited = []
+👉 Stores visited nodes.
+
+🔹 Min Heap
+min_heap = [(0, start)]
+👉 Priority queue with starting node.
+
+🔹 Total Cost
+total_cost = 0
+👉 Stores MST cost.
+
+🔹 Main Loop
+while min_heap:
+👉 Runs until heap empty.
+
+🔹 Remove Minimum Edge
+weight, node = heapq.heappop(min_heap)
+👉 Gets minimum weighted edge.
+
+🔹 Check Not Visited
+if node not in visited:
+👉 Prevents revisiting nodes.
+
+🔹 Add Node
+visited.append(node)
+👉 Marks node visited.
+
+🔹 Add Cost
+total_cost += weight
+👉 Adds edge weight.
+
+🔹 Traverse Neighbors
+for neighbor, edge_weight in graph[node]:
+👉 Checks adjacent nodes.
+
+🔹 Add to Heap
+heapq.heappush(min_heap,(edge_weight, neighbor))
+👉 Pushes neighbor edge into queue.
+
+==================================================
+🔹 KRUSKAL ALGORITHM
+==================================================
+
+🔹 Edge List
+edges = [
+👉 Stores graph edges with weights.
+
+🔹 Kruskal Function
+def kruskal(edges):
+👉 Defines Kruskal Algorithm.
+
+🔹 Visited List
+visited = []
+👉 Stores included nodes.
+
+🔹 Total Cost
+total_cost = 0
+👉 MST total weight.
+
+🔹 Traverse Edges
+for edge in edges:
+👉 Processes edges one by one.
+
+🔹 Extract Edge Values
+u = edge[0]v = edge[1]weight = edge[2]
+👉 Stores source, destination, weight.
+
+🔹 Cycle Check
+if u not in visited or v not in visited:
+👉 Prevents simple cycles.
+
+🔹 Print Edge
+print(u, "-", v)
+👉 Displays selected edge.
+
+🔹 Add Weight
+total_cost += weight
+👉 Adds edge cost.
+
+==================================================
+🔹 MAIN PROGRAM
+==================================================
+
+🔹 Array Input
+arr = [64, 25, 12, 22, 11]
+👉 Original array.
+
+🔹 Call Selection Sort
+sorted_array = selection_sort(arr)
+👉 Executes sorting.
+
+🔹 Call Prim’s
+prims(graph, 'A')
+👉 Executes Prim’s Algorithm.
+
+🔹 Call Kruskal
+kruskal(edges)
+👉 Executes Kruskal Algorithm.
+
+📐 IMPORTANT FORMULAS / RELATIONS
+🔹 Minimum Spanning Tree
+Minimum total edge cost connecting all vertices.
+
+🔹 Time Complexity
+Selection Sort
+O(n2)O(n^2)O(n2)
+Prim’s Algorithm
+O(Elog⁡V)O(E\log V)O(ElogV)
+Kruskal Algorithm
+O(Elog⁡E)O(E\log E)O(ElogE)
+
+🧠 IMPORTANT VIVA QUESTIONS
+🔹 Selection Sort
+
+
+What is Selection Sort?
+
+
+
+Sorting algorithm selecting minimum element each pass.
+
+
+
+Time complexity?
+
+
+
+O(n²)
+
+
+
+Is Selection Sort stable?
+
+
+
+No
+
+
+🔹 Prim’s Algorithm
+
+
+What is Prim’s Algorithm?
+
+
+
+Greedy algorithm for Minimum Spanning Tree.
+
+
+
+Which data structure used?
+
+
+
+Priority Queue / Min Heap.
+
+
+
+Starting point required?
+
+
+
+Yes.
+
+
+🔹 Kruskal Algorithm
+
+
+What is Kruskal Algorithm?
+
+
+
+MST algorithm selecting smallest edges.
+
+
+
+Kruskal uses which technique?
+
+
+
+Greedy approach.
+
+
+
+Main concept?
+
+
+
+Avoid cycles while selecting edges.
+
+
+🔹 General Graph Questions
+
+
+What is MST?
+
+
+
+Minimum Spanning Tree.
+
+
+
+Difference between Prim’s and Kruskal?
+
+
+
+Prim’s grows node-wise, Kruskal edge-wise.
+
+
+
+Which module used for heap?
+
+
+
+heapq.
+
+
+⚡ Strong Viva Closing Line
+
+“The practical demonstrated greedy algorithms for sorting and graph optimization using Selection Sort, Prim’s Algorithm, and Kruskal’s Algorithm in Python.”

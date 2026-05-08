@@ -1,0 +1,224 @@
+Here’s your updated combined code with:
+✅ Selection Sort
+✅ Prim’s Algorithm
+✅ Kruskal Algorithm
+✅ Dijkstra Algorithm added properly
+
+
+CODE :
+
+import heapq
+
+# ==================================================
+# SELECTION SORT
+# ==================================================
+
+def selection_sort(arr):
+
+    n = len(arr)
+
+    for i in range(n):
+
+        min_index = i
+
+        for j in range(i + 1, n):
+
+            if arr[j] < arr[min_index]:
+                min_index = j
+
+        # Swapping
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+    return arr
+
+
+# ==================================================
+# GRAPH FOR PRIM'S & DIJKSTRA
+# ==================================================
+
+graph = {
+    'A': [('B', 2), ('C', 4)],
+    'B': [('A', 2), ('C', 1), ('D', 7)],
+    'C': [('A', 4), ('B', 1), ('D', 3)],
+    'D': [('B', 7), ('C', 3)]
+}
+
+
+# ==================================================
+# PRIM'S ALGORITHM
+# ==================================================
+
+def prims(graph, start):
+
+    visited = []
+
+    min_heap = [(0, start)]
+
+    total_cost = 0
+
+    print("\n========== PRIM'S ALGORITHM ==========\n")
+
+    while min_heap:
+
+        weight, node = heapq.heappop(min_heap)
+
+        if node not in visited:
+
+            visited.append(node)
+
+            total_cost += weight
+
+            print("Selected Node :", node,
+                  "| Cost :", weight)
+
+            for neighbor, edge_weight in graph[node]:
+
+                if neighbor not in visited:
+                    heapq.heappush(min_heap,
+                                   (edge_weight, neighbor))
+
+    print("\nTotal Minimum Cost =", total_cost)
+
+
+# ==================================================
+# KRUSKAL ALGORITHM
+# ==================================================
+
+edges = [
+    ['B', 'C', 1],
+    ['A', 'B', 2],
+    ['C', 'D', 3],
+    ['A', 'C', 4],
+    ['B', 'D', 7]
+]
+
+
+def kruskal(edges):
+
+    visited = []
+
+    total_cost = 0
+
+    print("\n========== KRUSKAL ALGORITHM ==========\n")
+
+    for edge in edges:
+
+        u = edge[0]
+        v = edge[1]
+        weight = edge[2]
+
+        # Simple cycle checking
+        if u not in visited or v not in visited:
+
+            print(u, "-", v,
+                  "| Weight =", weight)
+
+            total_cost += weight
+
+            visited.append(u)
+            visited.append(v)
+
+    print("\nTotal Minimum Cost =", total_cost)
+
+
+# ==================================================
+# DIJKSTRA ALGORITHM
+# ==================================================
+
+def dijkstra(graph, start):
+
+    distances = {}
+
+    for node in graph:
+        distances[node] = float('inf')
+
+    distances[start] = 0
+
+    pq = [(0, start)]
+
+    print("\n========== DIJKSTRA ALGORITHM ==========\n")
+
+    while pq:
+
+        current_distance, current_node = heapq.heappop(pq)
+
+        for neighbor, weight in graph[current_node]:
+
+            distance = current_distance + weight
+
+            if distance < distances[neighbor]:
+
+                distances[neighbor] = distance
+
+                heapq.heappush(pq, (distance, neighbor))
+
+    print("Shortest Distances from Node", start)
+
+    for node in distances:
+        print(start, "->", node, "=", distances[node])
+
+
+# ==================================================
+# MAIN PROGRAM
+# ==================================================
+
+# SELECTION SORT
+arr = [64, 25, 12, 22, 11]
+
+print("========== SELECTION SORT ==========\n")
+
+print("Original Array:")
+print(arr)
+
+sorted_array = selection_sort(arr)
+
+print("\nSorted Array:")
+print(sorted_array)
+
+
+# PRIM'S ALGORITHM
+prims(graph, 'A')
+
+
+# KRUSKAL ALGORITHM
+kruskal(edges)
+
+
+# DIJKSTRA ALGORITHM
+dijkstra(graph, 'A')
+
+
+
+🧠 What Dijkstra Does
+👉 Finds shortest path from source node to all other nodes.
+Example Output:
+A -> A = 0A -> B = 2A -> C = 3A -> D = 6
+
+⚡ Important Viva One-Liners
+
+
+Dijkstra → Shortest path algorithm
+
+
+Uses → Greedy approach
+
+
+Data structure → Priority Queue / Min Heap
+
+
+Cannot handle → Negative weights
+
+
+Output → Minimum distance from source node
+
+
+
+📐 Important Formula
+New Distance=Current Distance+Edge Weight\text{New Distance} = \text{Current Distance} + \text{Edge Weight}New Distance=Current Distance+Edge Weight
+
+🧠 Difference (VERY ASKED)
+AlgorithmPurposePrim’sMinimum Spanning TreeKruskalMinimum Spanning TreeDijkstraShortest Path
+
+⚡ Strong Viva Closing Line
+
+“Dijkstra’s Algorithm finds the shortest path from a source node to all other nodes using a greedy approach and priority queue.”

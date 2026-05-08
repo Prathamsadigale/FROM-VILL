@@ -1,0 +1,263 @@
+Installation and configure Google App Engine. (Prime Numbers).
+
+
+
+
+Installation and Configure Google App Engine (Prime Numbers)
+STEP 1 — Update Ubuntu
+sudo apt update
+STEP 2 — Install Python
+sudo apt install python3 python3-pip -y
+STEP 3 — Install Google Cloud SDK (App Engine Tools)
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+sudo apt install apt-transport-https ca-certificates gnupg curl -y
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+
+sudo apt update
+
+sudo apt install google-cloud-cli -y
+STEP 4 — Verify Installation
+gcloud --version
+
+STEP 5 — Initialize SDK
+gcloud init
+STEP 6 — Create Prime Number Application
+mkdir PrimeApp
+cd PrimeApp
+nano main.py
+main.py Code
+from flask import Flask, request
+
+app = Flask(__name__)
+
+def is_prime(n):
+    if n <= 1:
+        return False
+
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+
+    return True
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    result = ""
+
+    if request.method == 'POST':
+        number = int(request.form['number'])
+
+        if is_prime(number):
+            result = f"{number} is a Prime Number"
+        else:
+            result = f"{number} is NOT a Prime Number"
+
+    return f'''
+    <h1>Prime Number Checker</h1>
+
+    <form method="post">
+        Enter Number:
+        <input type="number" name="number">
+        <input type="submit" value="Check">
+    </form>
+
+    <h2>{result}</h2>
+    '''
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+STEP 7 — Install Flask
+pip3 install flask
+STEP 8 — Run Application
+python3 main.py
+
+Open browser:
+http://localhost:5000
+Viva Explanation
+Google Cloud SDK and App Engine environment were installed and configured successfully on Ubuntu. Due to billing restriction, deployment was not completed, but the Prime Number application was executed locally.
+
+
+
+AIM
+To install and configure Google App Engine and develop a Prime Number Checker application using Python Flask framework.
+
+🎯 OBJECTIVE
+
+
+To understand Google Cloud SDK installation and configuration
+
+
+To learn basic working of Google App Engine
+
+
+To create and run a Python Flask web application
+
+
+To check whether a number is prime or not using Python
+
+
+To execute the application locally using localhost
+
+
+
+📘 THEORY
+Google App Engine is a Platform as a Service (PaaS) provided by Google Cloud that allows developers to build and host web applications without managing servers. It supports multiple programming languages such as Python, Java, and Node.js.
+In this practical, Google Cloud SDK was installed and configured on Ubuntu Linux. A Prime Number Checker application was developed using Python and Flask framework. Flask is a lightweight web framework used for creating web applications.
+The application accepts a number from the user and checks whether it is prime or not. A prime number is a number greater than 1 that has only two factors: 1 and itself.
+The application was executed locally using localhost because deployment on Google App Engine requires billing configuration.
+
+✅ CONCLUSION
+Google App Engine environment was successfully installed and configured. A Prime Number Checker application was developed using Python Flask and executed successfully on localhost. This practical helped in understanding cloud environment setup, web application development, and local execution using Google Cloud SDK.
+
+🧠 VIVA QUESTIONS WITH ONE-LINER ANSWERS
+🔹 Google App Engine Questions
+
+
+What is Google App Engine?
+
+
+
+A cloud platform used to develop and host web applications.
+
+
+
+Google App Engine belongs to which cloud model?
+
+
+
+PaaS (Platform as a Service).
+
+
+
+What is Google Cloud SDK?
+
+
+
+A set of tools used to manage Google Cloud services.
+
+
+
+Command to initialize SDK?
+
+
+
+gcloud init
+
+
+
+Command to check SDK version?
+
+
+
+gcloud --version
+
+
+🔹 Python & Flask Questions
+
+
+What is Flask?
+
+
+
+Lightweight Python web framework.
+
+
+
+Why use Flask?
+
+
+
+To create web applications easily.
+
+
+
+What is localhost?
+
+
+
+Local server running on the same machine.
+
+
+
+Default Flask port?
+
+
+
+5000
+
+
+
+Command to run Flask app?
+
+
+
+python3 main.py
+
+
+🔹 Prime Number Questions
+
+
+What is a prime number?
+
+
+
+A number divisible only by 1 and itself.
+
+
+
+Why use sqrt(n) in prime logic?
+
+
+
+To reduce unnecessary iterations.
+
+
+
+Condition for non-prime number?
+
+
+
+If divisible by any number other than 1 and itself.
+
+
+🔹 Linux Commands Questions
+
+
+sudo apt update purpose?
+
+
+
+Updates package list.
+
+
+
+pip3 install flask purpose?
+
+
+
+Installs Flask framework.
+
+
+
+mkdir command?
+
+
+
+Creates new directory.
+
+
+
+nano command?
+
+
+
+Opens text editor in terminal.
+
+
+⚡ Strong Viva Closing Line
+
+“Google Cloud SDK and App Engine environment were configured successfully, and the Prime Number Checker application was developed using Flask and executed locally.”
+

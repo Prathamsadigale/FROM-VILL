@@ -1,0 +1,228 @@
+Mini Project Idea (Simple + Scorable)
+✅ Student Management System (Salesforce App)
+
+👉 You will:
+
+Create a custom app
+Store student data
+Add records
+View/search students
+🧠 What You’ll Build
+
+Features:
+
+Add Student details
+View student records
+Track marks & department
+⚙️ STEP-BY-STEP IMPLEMENTATION
+🔹 STEP 1: Create Salesforce Account
+Go to 👉 https://developer.salesforce.com/signup
+Fill details
+Login to your org
+🔹 STEP 2: Open Setup
+Click ⚙️ (top right)
+Click Setup
+🔹 STEP 3: Create Custom App
+Search App Manager
+Click New Lightning App
+Enter:
+App Name: Student Management
+Click Next → Next → Save
+🔹 STEP 4: Create Custom Object
+Go to Setup → Search Object Manager
+Click Create → Custom Object
+
+Fill:
+
+Label: Student
+Plural: Students
+Record Name: Student Name
+
+✔ Tick:
+
+Allow Reports
+Allow Activities
+
+👉 Click Save
+
+🔹 STEP 5: Add Fields
+
+Now add important fields:
+
+1. Roll Number
+Type: Number
+2. Department
+Type: Text
+3. Marks
+Type: Number
+4. Email
+Type: Email
+
+👉 Go to:
+
+Fields & Relationships → New → Select type → Create
+🔹 STEP 6: Add Tab
+Go to Setup → Tabs
+Click New
+Select Object → Student
+Choose any icon → Save
+🔹 STEP 7: Add Object to App
+Go to App Manager
+Edit your app
+Add Student to Navigation Items
+Save
+🔹 STEP 8: Use Your App
+Open App Launcher (9 dots)
+Select Student Management
+Click Students
+Click New
+Add student data 🎉
+
+💻 (Optional) Add Apex Logic
+Example: Calculate Grade
+public class StudentHelper {
+
+    public static String getGrade(Integer marks) {
+        if (marks >= 75) return 'A';
+        else if (marks >= 60) return 'B';
+        else if (marks >= 40) return 'C';
+        else return 'Fail';
+    }
+}
+
+
+Run in Anonymous:
+
+System.debug(StudentHelper.getGrade(85));
+execute 
+
+📊 System Architecture (Simple Explanation for Viva)
+Frontend → Lightning App UI
+Backend → Salesforce Objects
+Logic → Apex Code
+Database → Salesforce Cloud Storage
+🧾 Viva Answer (Very Important)
+
+If teacher asks:
+
+👉 “What did you develop?”
+
+A custom Student Management Application using Salesforce Lightning Platform.
+
+👉 “What technologies used?”
+
+Salesforce Cloud, Apex, Custom Objects, Lightning UI.
+
+👉 “What is benefit?”
+
+Centralized data, easy management, scalable cloud system.
+
+
+AIM
+
+To design and develop a custom Student Management System application using the Salesforce Lightning Platform for managing student records efficiently.
+
+🎯 OBJECTIVE
+To understand Salesforce cloud platform and Lightning applications
+To create custom objects, fields, and tabs in Salesforce
+To store and manage student information digitally
+To implement simple business logic using Apex programming
+To learn cloud-based application development using Salesforce
+📘 THEORY
+
+Salesforce
+ is a cloud-based Customer Relationship Management (CRM) platform that allows users to build scalable and secure applications. It provides tools such as Lightning Apps, Custom Objects, Apex programming, and cloud storage for application development.
+
+In this mini project, a Student Management System was developed using Salesforce Lightning Platform. A custom app named “Student Management” was created along with a custom object called “Student.” Various fields such as Roll Number, Department, Marks, and Email were added to store student information.
+
+The application allows users to add, view, and manage student records. An optional Apex class was used to calculate student grades based on marks. The project demonstrates cloud-based application development, data management, and Salesforce customization features.
+
+✅ CONCLUSION
+
+The Student Management System was successfully developed using Salesforce Lightning Platform. The application stores and manages student details efficiently using custom objects and fields. Apex programming was used to implement additional business logic. This project provided practical knowledge of Salesforce cloud application development, data handling, and Lightning interface customization.
+
+🧠 VIVA QUESTIONS WITH ONE-LINER ANSWERS
+🔹 Salesforce Basics
+What is Salesforce?
+
+A cloud-based CRM and application development platform.
+
+What is CRM?
+
+Customer Relationship Management.
+
+Salesforce belongs to which cloud model?
+
+SaaS and PaaS.
+
+What is Lightning App?
+
+Custom Salesforce application interface.
+
+🔹 Project Questions
+What project did you develop?
+
+Student Management System.
+
+Purpose of the project?
+
+To manage student records digitally.
+
+Which object did you create?
+
+Student custom object.
+
+Which fields were added?
+
+Roll Number, Department, Marks, and Email.
+
+🔹 Apex Questions
+What is Apex?
+
+Object-oriented programming language in Salesforce.
+
+Why use Apex?
+
+To implement custom business logic.
+
+What does System.debug() do?
+
+Displays output in debug logs.
+
+What is a static method?
+
+Method called without creating object.
+
+🔹 Salesforce Components
+What is Object Manager?
+
+Tool to manage objects and fields.
+
+What is App Launcher?
+
+Used to open Salesforce apps.
+
+What is a Custom Object?
+
+User-created database table in Salesforce.
+
+What is a Field?
+
+Stores specific data in an object.
+
+🔹 Cloud & Database Questions
+Where is data stored?
+
+Salesforce cloud database.
+
+Main benefit of cloud application?
+
+Accessible from anywhere.
+
+Advantage of Salesforce?
+
+Scalable, secure, and easy to customize.
+
+⚡ Strong Viva Closing Line
+
+“The project demonstrated development of a cloud-based Student Management System using Salesforce Lightning Platform with custom objects, fields, and Apex logic.”

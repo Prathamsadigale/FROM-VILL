@@ -1,0 +1,326 @@
+CODE :
+
+# N-Queens Problem using Branch and Bound
+
+def print_board(board, n):
+
+    for i in range(n):
+
+        for j in range(n):
+
+            if board[i] == j:
+                print("Q", end=" ")
+
+            else:
+                print("_", end=" ")
+
+        print()
+
+    print()
+
+
+# Branch and Bound Function
+def solve_nqueen(board, row, n, columns, left_diag, right_diag):
+
+    # If all queens are placed
+    if row == n:
+
+        print("Solution Found:\n")
+
+        print_board(board, n)
+
+        return True
+
+    # Try placing queen in every column
+    for col in range(n):
+
+        # Check if position is safe
+        if columns[col] == 0 and \
+           left_diag[row - col + n - 1] == 0 and \
+           right_diag[row + col] == 0:
+
+            # Place queen
+            board[row] = col
+
+            # Mark column and diagonals as occupied
+            columns[col] = 1
+            left_diag[row - col + n - 1] = 1
+            right_diag[row + col] = 1
+
+            # Recursive call
+            if solve_nqueen(board, row + 1, n,
+                             columns, left_diag, right_diag):
+                return True
+
+            # Backtracking (Bound fails)
+            board[row] = -1
+
+            columns[col] = 0
+            left_diag[row - col + n - 1] = 0
+            right_diag[row + col] = 0
+
+    return False
+
+
+# MAIN PROGRAM
+n = 4
+
+board = [-1] * n
+
+# Arrays for Branch and Bound
+columns = [0] * n
+left_diag = [0] * (2 * n)
+right_diag = [0] * (2 * n)
+
+print("Solving", n, "Queens Problem using Branch and Bound...\n")
+
+solve_nqueen(board, 0, n,
+             columns, left_diag, right_diag)
+
+
+
+AIM
+
+To solve the N-Queens Problem using Branch and Bound technique in Python.
+
+🎯 OBJECTIVE
+To understand Branch and Bound technique
+To solve N-Queens problem efficiently
+To reduce unnecessary searching using bounds
+To apply constraint checking in AI problems
+To study optimization techniques in Artificial Intelligence
+📘 THEORY
+
+Branch and Bound is an optimization technique used in Artificial Intelligence and combinatorial problems. It divides the problem into smaller branches and eliminates branches that cannot produce valid solutions using bounds.
+
+In the N-Queens problem, queens must be placed such that:
+
+No two queens are in same row
+No two queens are in same column
+No two queens are on same diagonal
+
+Branching means trying different positions for queens. Bounding means rejecting unsafe positions immediately without exploring them further.
+
+This method is faster than simple backtracking because invalid states are eliminated early using column and diagonal arrays.
+
+✅ CONCLUSION
+
+The N-Queens problem was successfully solved using the Branch and Bound technique in Python. The algorithm efficiently reduced unnecessary computations by checking column and diagonal constraints before recursive calls. This practical helped in understanding optimization techniques, intelligent search methods, and constraint handling in Artificial Intelligence.
+
+🧠 LINE-BY-LINE CODE EXPLANATION
+==================================================
+🔹 PRINT BOARD FUNCTION
+==================================================
+🔹 Function Definition
+def print_board(board, n):
+
+👉 Prints chessboard.
+
+🔹 Traverse Rows
+for i in range(n):
+
+👉 Iterates through rows.
+
+🔹 Traverse Columns
+for j in range(n):
+
+👉 Iterates through columns.
+
+🔹 Check Queen Position
+if board[i] == j:
+
+👉 Checks queen position.
+
+🔹 Print Queen
+print("Q", end=" ")
+
+👉 Displays queen.
+
+🔹 Print Empty Space
+print("_", end=" ")
+
+👉 Displays empty box.
+
+==================================================
+🔹 BRANCH AND BOUND FUNCTION
+==================================================
+🔹 Function Definition
+def solve_nqueen(board, row, n, columns, left_diag, right_diag):
+
+👉 Main recursive function.
+
+Parameters:
+
+board → queen positions
+row → current row
+columns → occupied columns
+left_diag → occupied left diagonals
+right_diag → occupied right diagonals
+🔹 Base Condition
+if row == n:
+
+👉 All queens placed successfully.
+
+🔹 Print Solution
+print("Solution Found:\n")
+
+👉 Displays success message.
+
+🔹 Print Board
+print_board(board, n)
+
+👉 Displays chessboard.
+
+🔹 Return True
+return True
+
+👉 Stops recursion after solution.
+
+🔹 Try Every Column
+for col in range(n):
+
+👉 Tries all columns.
+
+🔹 Bounding Condition
+if columns[col] == 0 and \
+   left_diag[row - col + n - 1] == 0 and \
+   right_diag[row + col] == 0:
+
+👉 Checks:
+
+Column free
+Left diagonal free
+Right diagonal free
+
+🗣️ Viva:
+
+“This is the bounding condition.”
+
+🔹 Place Queen
+board[row] = col
+
+👉 Places queen.
+
+🔹 Mark Column Occupied
+columns[col] = 1
+
+👉 Column blocked.
+
+🔹 Mark Left Diagonal
+left_diag[row - col + n - 1] = 1
+
+👉 Left diagonal blocked.
+
+🔹 Mark Right Diagonal
+right_diag[row + col] = 1
+
+👉 Right diagonal blocked.
+
+🔹 Recursive Call
+solve_nqueen(board, row + 1, n,
+             columns, left_diag, right_diag)
+
+👉 Moves to next row.
+
+🔹 Backtracking
+board[row] = -1
+
+👉 Removes queen if needed.
+
+🔹 Unmark Column
+columns[col] = 0
+
+👉 Makes column free again.
+
+🔹 Unmark Diagonals
+left_diag[...] = 0
+right_diag[...] = 0
+
+👉 Removes bounds.
+
+==================================================
+🔹 MAIN PROGRAM
+==================================================
+🔹 Number of Queens
+n = 4
+
+👉 Solves 4-Queens problem.
+
+🔹 Empty Board
+board = [-1] * n
+
+👉 Creates board.
+
+🔹 Column Array
+columns = [0] * n
+
+👉 Tracks occupied columns.
+
+🔹 Left Diagonal Array
+left_diag = [0] * (2 * n)
+
+👉 Tracks left diagonals.
+
+🔹 Right Diagonal Array
+right_diag = [0] * (2 * n)
+
+👉 Tracks right diagonals.
+
+🔹 Start Function
+solve_nqueen(board, 0, n,
+             columns, left_diag, right_diag)
+
+👉 Starts solving from row 0.
+
+📐 IMPORTANT RELATIONS / FORMULAS
+🔹 Left Diagonal Relation
+
+row−col+n−1
+
+🔹 Right Diagonal Relation
+
+row+col
+
+🧠 IMPORTANT VIVA QUESTIONS
+🔹 Branch and Bound Questions
+What is Branch and Bound?
+
+Optimization technique using branching and pruning.
+
+What is branching?
+
+Exploring possible solutions.
+
+What is bounding?
+
+Rejecting invalid branches early.
+
+Main advantage?
+
+Reduces unnecessary computations.
+
+🔹 N-Queens Questions
+Goal of N-Queens?
+
+Place queens safely on chessboard.
+
+Constraints in N-Queens?
+
+No same row, column, or diagonal.
+
+Why diagonal arrays used?
+
+Fast conflict checking.
+
+🔹 Comparison Questions
+Difference between Backtracking and Branch & Bound?
+
+Branch & Bound uses pruning with bounds for optimization.
+
+Which is faster?
+
+Branch and Bound.
+
+⚡ Strong Viva Closing Line
+
+“The practical demonstrated solving the N-Queens problem efficiently using Branch and Bound by reducing unnecessary searches through constraint-based pruning.”

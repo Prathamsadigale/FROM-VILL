@@ -1,0 +1,142 @@
+APEX FOR SELECTION SORT
+
+FILE NAME : SelectionSortExample
+
+public class SelectionSortExample {
+
+    // Method for Selection Sort
+    public static void selectionSort() {
+
+        // Array of numbers
+        Integer[] arr = new Integer[]{64, 25, 12, 22, 11};
+
+        Integer n = arr.size();
+
+        // Selection Sort Logic
+        for(Integer i = 0; i < n - 1; i++) {
+
+            Integer minIndex = i;
+
+            for(Integer j = i + 1; j < n; j++) {
+
+                if(arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Swap elements
+            Integer temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+
+        // Print sorted array
+        System.debug('Sorted Array: ' + arr);
+    }
+}
+
+
+
+
+Steps to Run in Salesforce
+🔹 Step 1: Login to Salesforce
+
+Open your Salesforce account.
+
+🔹 Step 2: Open Developer Console
+Click ⚙️ (top right)
+Select Developer Console
+🔹 Step 3: Create Apex Class
+
+Go to:
+
+File → New → Apex Class
+
+Enter class name:
+
+SelectionSortExample
+Paste the code
+Click Save
+
+🔹 Step 4: Open Execute Anonymous Window
+
+Go to:
+
+Debug → Open Execute Anonymous Window
+
+🔹 Step 5: Execute the Method
+
+Paste this:
+
+SelectionSortExample.selectionSort();
+
+Click:
+
+Execute
+✅ Expected Output
+
+Go to:
+
+Logs → Open Latest Log
+
+You will see:
+
+Sorted Array: (11, 12, 22, 25, 64)
+
+🧠 Important Viva One-Liners
+
+Selection Sort → Finds minimum element and places it correctly
+Time Complexity → O(n²)
+In-place sorting algorithm → Uses same array for sorting
+Swapping → Exchanges positions of elements
+Apex syntax → Similar to Java
+
+⚡ External Examiner Questions
+Why called Selection Sort?
+
+Because smallest element is selected in each pass.
+
+Best case complexity?
+
+O(n²)
+
+Is Selection Sort stable?
+
+No
+
+Main advantage?
+
+Simple and easy to understand.
+
+Main disadvantage?
+
+Slow for large datasets.
+
+
+
+AIM
+
+To implement and execute the Selection Sort algorithm in Apex programming language using Salesforce Developer Console.
+
+🎯 OBJECTIVE
+To understand the working of Selection Sort algorithm
+To learn array handling in Apex programming
+To perform sorting of integer values in ascending order
+To execute Apex code using Salesforce Developer Console
+To display sorted output using Debug Logs
+📘 THEORY
+
+Apex is an object-oriented programming language provided by Salesforce
+ for developing custom business logic on the Salesforce platform. It has syntax similar to Java and supports arrays, loops, conditions, and object-oriented concepts.
+
+Selection Sort is a simple comparison-based sorting algorithm. In each iteration, the algorithm selects the smallest element from the unsorted portion of the array and places it in its correct position. The process continues until the entire array is sorted.
+
+In this practical, an integer array was created in Apex and sorted using the Selection Sort algorithm. The output was displayed using System.debug() in Salesforce Debug Logs.
+
+✅ CONCLUSION
+
+The Selection Sort algorithm was successfully implemented and executed in Apex using Salesforce Developer Console. The array elements were sorted in ascending order by repeatedly selecting the minimum element and swapping it into the correct position. This practical helped in understanding sorting techniques, array manipulation, and Apex programming concepts.
+
+⚡ Strong Practical Conclusion Line
+
+“The practical demonstrated implementation of the Selection Sort algorithm in Apex, helping to u

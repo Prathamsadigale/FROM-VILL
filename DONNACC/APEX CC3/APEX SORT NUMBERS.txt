@@ -1,0 +1,187 @@
+code : apex soting of numbers  
+
+public class SortNumbersExample {
+
+    // Method to sort numbers
+    public static void sortNumbers() {
+
+        // Create list of integers
+        List<Integer> numbers = new List<Integer>{5, 2, 9, 1, 7};
+
+        // Print original list
+        System.debug('Before Sorting: ' + numbers);
+
+        // Sort the numbers in ascending order
+        numbers.sort();
+
+        // Print sorted list
+        System.debug('After Sorting: ' + numbers);
+    }
+}
+
+How to Run in Salesforce (Step-by-Step)
+
+🔹 Step 1: Open Salesforce
+Login to your Salesforce account
+
+🔹 Step 2: Open Developer Console
+Click ⚙️ (top right)
+Select Developer Console
+
+🔹 Step 3: Create Apex Class
+Go to File → New → Apex Class
+Name: SortNumbersExample
+Paste the code
+Click Save
+
+🔹 Step 4: Execute the Code
+Go to Debug → Open Execute Anonymous Window
+Paste this:
+SortNumbersExample.sortNumbers();
+Click Execute
+
+Step 5: Check Output
+Go to Logs
+Open latest log
+Look for:
+Before Sorting: (5, 2, 9, 1, 7)
+After Sorting: (1, 2, 5, 7, 9)
+
+Viva / Exam Lines
+Apex uses List.sort() for sorting
+Sorting is done in ascending order by default
+Works similar to Java collections
+🧠 If Teacher Asks Twist Question
+
+👉 “How to sort in descending order?”
+
+numbers.sort();
+numbers.reverse();
+
+
+Important Viva One-Liners (Apex Sorting of Numbers)
+
+🔹 Basic Questions
+
+Apex → Object-oriented programming language used in Salesforce
+List in Apex → Collection used to store multiple values
+Integer → Data type used for whole numbers
+sort() → Built-in method used to arrange elements in ascending order
+reverse() → Used to reverse sorted list into descending order
+
+🔹 Code-Based Viva
+
+List<Integer> → Stores integer values in a list
+System.debug() → Prints output in debug logs
+public class → Class accessible from anywhere
+static method → Method can be called without creating object
+numbers.sort() → Sorts list in ascending order
+
+🔹 Conceptual Questions
+
+Default sorting order → Ascending
+Descending sorting → Use reverse() after sort()
+Salesforce executes Apex using → Developer Console / Execute Anonymous
+Output is checked in → Debug Logs
+Apex syntax is similar to → Java
+
+🔹 External Examiner Type Questions
+
+Why use List?
+
+To store multiple values dynamically
+
+Why use sort()?
+
+To arrange data in proper order
+
+Can Apex sort strings?
+
+Yes, using List<String>.sort()
+
+Is Apex case-sensitive?
+
+Yes
+
+What is Execute Anonymous Window?
+
+Tool used to run Apex code directly
+
+What is Developer Console?
+
+Salesforce IDE for writing and testing Apex
+
+What happens if list is empty?
+
+sort() executes without error
+
+Time complexity of sorting?
+
+Depends on internal implementation (optimized sorting algorithm)
+
+⚡ Strong Viva Closing Line
+
+“This program demonstrates sorting in Apex using the built-in List.sort() method, which simplifies data organization efficiently.”
+
+
+AIM
+
+To develop and execute an Apex program in Salesforce for sorting numbers using the built-in List.sort() method.
+
+🎯 OBJECTIVE
+To understand the basics of Apex programming language
+To learn list operations in Salesforce Apex
+To implement sorting of integer values using sort() method
+To execute Apex code using Developer Console
+To analyze output using Debug Logs
+📘 THEORY
+
+Apex is an object-oriented programming language developed by Salesforce
+ for executing flow and transaction control statements on the Salesforce platform. Its syntax is similar to Java and it is mainly used for backend business logic in Salesforce applications.
+
+In this practical, a list of integers was created using List<Integer>. The built-in sort() method was used to arrange the numbers in ascending order. The output was displayed using System.debug() in the Debug Logs.
+
+The program demonstrates collection handling and sorting techniques in Apex. An optional version of the program also accepts user-defined input lists for dynamic sorting.
+
+✅ CONCLUSION
+
+The Apex sorting program was successfully implemented and executed in Salesforce Developer Console. Integer values were sorted using the built-in List.sort() method, and the results were verified through Debug Logs. This practical helped in understanding Apex collections, methods, and execution process in Salesforce.
+
+⚡ Strong Practical Conclusion Line
+
+“The practical demonstrated sorting of numbers in Salesforce Apex using the built-in sorting method, providing efficient data organization and collection handling.”
+
+
+
+optional for user input :
+
+FILE NAME :SortNumbersExample
+
+
+public class SortNumbersExample {
+
+    // Method to sort numbers
+    public static void sortNumbers(List<Integer> numbers) {
+
+        // Print original list
+        System.debug('Before Sorting: ' + numbers);
+
+        // Sort the list
+        numbers.sort();
+
+        // Print sorted list
+        System.debug('After Sorting: ' + numbers);
+    }
+}
+
+
+
+
+execute process:
+
+
+List<Integer> myNumbers = new List<Integer>{8, 3, 6, 1, 9};
+
+SortNumbersExample.sortNumbers(myNumbers);
+
+click execute

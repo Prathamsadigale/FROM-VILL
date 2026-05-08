@@ -1,0 +1,238 @@
+AIM: Implement depth first search algorithm and Breadth First Search algorithm.
+
+
+CODE :
+
+import collections
+
+# ==================================================
+# DFS (Depth First Search)
+# ==================================================
+
+graph_dfs = {
+    'A': ['B', 'C', 'D'],
+    'B': [],
+    'C': ['E', 'D'],
+    'D': [],
+    'E': []
+}
+
+visited = set()
+
+print("\n========== DFS ALGORITHM ==========\n")
+
+print("Graph:\n")
+
+print("""
+        A
+      / | \\
+     B  C--D
+        |
+        E
+""")
+
+print("Graph Connections:")
+print("A -> B, C, D")
+print("C -> E, D")
+
+print("\nDFS Traversal:\n")
+
+
+# DFS FUNCTION
+def dfs(visited, graph, node):
+
+    if node not in visited:
+
+        print(node)
+
+        visited.add(node)
+
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+
+# CALL DFS
+dfs(visited, graph_dfs, 'A')
+
+
+# ==================================================
+# BFS (Breadth First Search)
+# ==================================================
+
+graph_bfs = {
+    0: [1, 2, 3],
+    1: [0, 2],
+    2: [0, 1, 4],
+    3: [0],
+    4: [2]
+}
+
+print("\n========== BFS ALGORITHM ==========\n")
+
+print("Graph:\n")
+
+print("""
+          0
+        / | \\
+       1--2  3
+           |
+           4
+""")
+
+print("Graph Connections:")
+print("0 -> 1, 2, 3")
+print("1 -> 0, 2")
+print("2 -> 0, 1, 4")
+print("3 -> 0")
+print("4 -> 2")
+
+print("\nBFS Traversal:\n")
+
+
+# BFS FUNCTION
+def bfs(graph, start):
+
+    visited = set([start])
+
+    queue = collections.deque([start])
+
+    while queue:
+
+        vertex = queue.popleft()
+
+        print(vertex)
+
+        for neighbour in graph[vertex]:
+
+            if neighbour not in visited:
+
+                visited.add(neighbour)
+
+                queue.append(neighbour)
+
+
+# CALL BFS
+bfs(graph_bfs, 0)
+
+
+AIM
+
+To implement and analyze Depth First Search (DFS) and Breadth First Search (BFS) graph traversal algorithms using Python.
+
+🎯 OBJECTIVE
+To understand graph traversal techniques
+To implement DFS using recursion
+To implement BFS using queue data structure
+To compare depth-wise and level-wise traversal methods
+To study traversal of graph nodes efficiently
+📘 THEORY
+
+DFS (Depth First Search) and BFS (Breadth First Search) are fundamental graph traversal algorithms used in Artificial Intelligence, Data Structures, and Graph Theory.
+
+Depth First Search (DFS) explores nodes depth-wise before backtracking. It uses recursion or stack data structure. DFS is useful in path finding, cycle detection, and maze problems.
+
+Breadth First Search (BFS) explores nodes level by level. It uses a queue data structure to visit neighboring nodes first before moving deeper. BFS is commonly used for shortest path problems in unweighted graphs.
+
+In this practical, graphs were represented using adjacency lists in Python dictionaries. DFS traversal was implemented using recursion and visited set, while BFS traversal was implemented using queue from Python collections module.
+
+✅ CONCLUSION
+
+DFS and BFS algorithms were successfully implemented in Python. DFS traversed the graph depth-wise using recursion, while BFS traversed the graph level-wise using queue. The practical helped in understanding graph representation, traversal techniques, recursion, queue operations, and search algorithms used in Artificial Intelligence and graph-related applications.
+
+🧠 VIVA QUESTIONS WITH ONE-LINER ANSWERS
+🔹 DFS Questions
+What is DFS?
+
+Graph traversal algorithm that explores depth-wise.
+
+DFS uses which data structure?
+
+Stack or recursion.
+
+Main advantage of DFS?
+
+Requires less memory.
+
+DFS traversal style?
+
+Depth-first traversal.
+
+DFS is implemented using?
+
+Recursion or stack.
+
+🔹 BFS Questions
+What is BFS?
+
+Graph traversal algorithm that explores level-wise.
+
+BFS uses which data structure?
+
+Queue.
+
+Main advantage of BFS?
+
+Finds shortest path in unweighted graphs.
+
+BFS traversal style?
+
+Breadth-first traversal.
+
+Queue operation used in BFS?
+
+FIFO (First In First Out).
+
+🔹 Graph Questions
+What is a graph?
+
+Collection of nodes and edges.
+
+What is adjacency list?
+
+Graph representation using linked neighbors.
+
+Why use visited set?
+
+To avoid revisiting nodes.
+
+What is node?
+
+Vertex in graph.
+
+What is edge?
+
+Connection between nodes.
+
+🔹 Python Questions
+Which module is used for BFS queue?
+
+collections module.
+
+What is deque?
+
+Double-ended queue.
+
+Purpose of popleft()?
+
+Removes front element from queue.
+
+What is recursion?
+
+Function calling itself.
+
+🔹 Comparison Questions
+DFS vs BFS?
+
+DFS goes deep, BFS goes level-wise.
+
+Which algorithm uses more memory?
+
+BFS.
+
+Which algorithm is better for shortest path?
+
+BFS.
+
+⚡ Strong Viva Closing Line
+
+“The practical demonstrated graph traversal using DFS and BFS algorithms, helping understand recursive and queue-based searching techniques in graphs.”

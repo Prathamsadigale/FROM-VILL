@@ -1,0 +1,367 @@
+AIM : Implement A star Algorithm for any game search problem.
+
+CODE : 
+
+import heapq
+
+goal = [[1,2,3],
+        [4,5,6],
+        [7,8,0]]
+
+def print_puzzle(state):
+    print()
+    for row in state:
+        print("|", end=" ")
+        for val in row:
+            print(val if val != 0 else "_", end=" | ")
+        print()
+    print()
+
+
+def heuristic(state):
+    # misplaced tiles
+    count = 0
+    for i in range(3):
+        for j in range(3):
+            if state[i][j] != 0 and state[i][j] != goal[i][j]:
+                count += 1
+    return count
+
+
+def find_blank(state):
+    for i in range(3):
+        for j in range(3):
+            if state[i][j] == 0:
+                return i, j
+
+
+def state_to_tuple(state):
+    return tuple(tuple(row) for row in state)
+
+
+def a_star(start):
+    pq = []
+    visited = set()
+    counter = 0   # tie-breaker
+
+    heapq.heappush(pq, (0, counter, start, []))
+
+    while pq:
+        cost, _, state, path = heapq.heappop(pq)
+
+        state_key = state_to_tuple(state)
+        if state_key in visited:
+            continue
+
+        visited.add(state_key)
+        path = path + [state]
+
+        if state == goal:
+            print("\nGOAL REACHED!\n")
+            print("Solution Path:\n")
+            for step in path:
+                print_puzzle(step)
+            return
+
+        x, y = find_blank(state)
+
+        moves = [(0,1),(0,-1),(1,0),(-1,0)]
+
+        for dx, dy in moves:
+            nx, ny = x+dx, y+dy
+
+            if 0 <= nx < 3 and 0 <= ny < 3:
+                new_state = [row[:] for row in state]
+                new_state[x][y], new_state[nx][ny] = new_state[nx][ny], new_state[x][y]
+
+                new_key = state_to_tuple(new_state)
+
+                if new_key not in visited:
+                    g = len(path)
+                    h = heuristic(new_state)
+                    counter += 1
+                    heapq.heappush(pq, (g+h, counter, new_state, path))
+
+
+# START STATE
+start = [[1,2,3],
+         [4,0,6],
+         [7,5,8]]
+
+print("\nSTART STATE:\n")
+print_puzzle(start)
+
+a_star(start)
+
+
+
+🎯 AIM
+To implement the A* Search Algorithm for solving the 8-Puzzle problem using heuristic search technique in Python.
+
+🎯 OBJECTIVE
+
+
+To understand heuristic search algorithms
+
+
+To implement A* algorithm for 8-puzzle problem
+
+
+To use heuristic function for optimal path finding
+
+
+To study state space representation in AI problems
+
+
+To find shortest path from initial state to goal state
+
+
+
+📘 THEORY
+The A* (A-Star) Algorithm is a heuristic search algorithm used in Artificial Intelligence for finding the shortest and optimal path between initial and goal states. It combines the advantages of Uniform Cost Search and Greedy Best First Search.
+The algorithm uses the evaluation function:
+f(n)=g(n)+h(n)f(n) = g(n) + h(n)f(n)=g(n)+h(n)
+Where:
+
+
+g(n) → Actual cost from start node to current node
+
+
+h(n) → Heuristic estimated cost from current node to goal
+
+
+f(n) → Total estimated cost
+
+
+In this practical, the 8-puzzle problem is solved using A* algorithm with the heuristic function “Misplaced Tiles.” The algorithm explores puzzle states and selects the state with minimum cost until the goal state is reached.
+Priority Queue (heapq) is used to efficiently select the state with lowest cost.
+
+✅ CONCLUSION
+The A* Search Algorithm was successfully implemented for solving the 8-puzzle problem. The algorithm used heuristic search with misplaced tile heuristic to find the optimal solution path from initial state to goal state. This practical helped in understanding heuristic functions, priority queues, state space search, and intelligent pathfinding techniques in Artificial Intelligence.
+
+🧠 LINE-BY-LINE CODE EXPLANATION
+
+🔹 Import Heap Queue
+import heapq
+👉 Imports priority queue library for A* search.
+
+🔹 Goal State
+goal = [[1,2,3],        [4,5,6],        [7,8,0]]
+👉 Defines final target state of puzzle.
+👉 0 represents blank space.
+
+🔹 Print Puzzle Function
+def print_puzzle(state):
+👉 Function to display puzzle neatly.
+for row in state:
+👉 Traverses each row.
+print(val if val != 0 else "_")
+👉 Prints _ instead of blank tile.
+
+🔹 Heuristic Function
+def heuristic(state):
+👉 Calculates heuristic value.
+count += 1
+👉 Counts misplaced tiles.
+🗣️ Viva:
+
+“Heuristic estimates distance from goal state.”
+
+
+🔹 Find Blank Tile
+def find_blank(state):
+👉 Finds position of blank tile (0).
+
+🔹 Convert State to Tuple
+def state_to_tuple(state):
+👉 Converts list to tuple for storing in set.
+🗣️ Viva:
+
+“Tuple is hashable, list is not.”
+
+
+🔹 Main A* Function
+def a_star(start):
+👉 Starts A* algorithm.
+
+🔹 Priority Queue
+pq = []
+👉 Stores states based on minimum cost.
+
+🔹 Visited Set
+visited = set()
+👉 Prevents revisiting states.
+
+🔹 Tie Breaker
+counter = 0
+👉 Used when costs are same.
+
+🔹 Push Start State
+heapq.heappush(pq, (0, counter, start, []))
+👉 Inserts initial state into queue.
+
+🔹 Main Loop
+while pq:
+👉 Runs until queue becomes empty.
+
+🔹 Pop Lowest Cost State
+cost, _, state, path = heapq.heappop(pq)
+👉 Removes state with smallest f(n).
+
+🔹 Goal Check
+if state == goal:
+👉 Checks if goal reached.
+
+🔹 Print Solution Path
+for step in path:
+👉 Displays all steps from start to goal.
+
+🔹 Find Blank Position
+x, y = find_blank(state)
+👉 Gets blank tile coordinates.
+
+🔹 Possible Moves
+moves = [(0,1),(0,-1),(1,0),(-1,0)]
+👉 Right, Left, Down, Up moves.
+
+🔹 Generate New State
+new_state = [row[:] for row in state]
+👉 Creates copy of current state.
+
+🔹 Swap Tiles
+new_state[x][y], new_state[nx][ny] = ...
+👉 Moves blank tile.
+
+🔹 Calculate Costs
+g = len(path)
+👉 Actual cost from start.
+h = heuristic(new_state)
+👉 Estimated heuristic cost.
+g+h
+👉 Total A* cost.
+
+🔹 Push New State
+heapq.heappush(pq, (g+h, counter, new_state, path))
+👉 Adds next state into queue.
+
+🔹 Start State
+start = [[1,2,3],         [4,0,6],         [7,5,8]]
+👉 Initial puzzle configuration.
+
+🔹 Call A* Algorithm
+a_star(start)
+👉 Executes algorithm.
+
+📐 IMPORTANT FORMULAS
+🔹 A* Evaluation Function
+f(n)=g(n)+h(n)f(n)=g(n)+h(n)f(n)=g(n)+h(n)
+
+🔹 Misplaced Tile Heuristic
+h(n)=Number of misplaced tilesh(n)=\text{Number of misplaced tiles}h(n)=Number of misplaced tiles
+
+🧠 IMPORTANT VIVA QUESTIONS
+🔹 A* Questions
+
+
+What is A* algorithm?
+
+
+
+Heuristic search algorithm used for optimal path finding.
+
+
+
+A* uses which formula?
+
+
+
+f(n)=g(n)+h(n)
+
+
+
+What is heuristic?
+
+
+
+Estimated cost to reach goal.
+
+
+
+Which heuristic is used here?
+
+
+
+Misplaced tiles heuristic.
+
+
+
+What does g(n) represent?
+
+
+
+Actual path cost.
+
+
+
+What does h(n) represent?
+
+
+
+Estimated remaining cost.
+
+
+🔹 8 Puzzle Questions
+
+
+What is 8-puzzle problem?
+
+
+
+Sliding puzzle with 8 numbered tiles and one blank.
+
+
+
+What does 0 represent?
+
+
+
+Blank tile.
+
+
+
+Goal of puzzle?
+
+
+
+Reach target configuration.
+
+
+🔹 Python Questions
+
+
+Why use heapq?
+
+
+
+To implement priority queue.
+
+
+
+Why use visited set?
+
+
+
+To avoid revisiting states.
+
+
+
+Why convert list to tuple?
+
+
+
+Tuples can be stored in set.
+
+
+⚡ Strong Viva Closing Line
+
+“The A* algorithm efficiently solved the 8-puzzle problem using heuristic search and optimal path evaluation based on f(n)=g(n)+h(n).”

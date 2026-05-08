@@ -1,0 +1,242 @@
+SPPU AI Viva Questions (One-Liner Answers)
+What is Artificial Intelligence?
+
+Simulation of human intelligence by machines.
+
+Goal of AI?
+
+To make machines think and act intelligently.
+
+Types of AI?
+
+Weak AI and Strong AI.
+
+What is an Intelligent Agent?
+
+Entity that senses environment and acts accordingly.
+
+Components of Intelligent Agent?
+
+Sensors, actuators, and environment.
+
+What is heuristic?
+
+Smart estimate used to reach goal faster.
+
+What is heuristic function?
+
+Function that estimates cost to goal.
+
+What is state space search?
+
+Searching all possible states to solve problem.
+
+What is uninformed search?
+
+Search without heuristic knowledge.
+
+What is informed search?
+
+Search using heuristic information.
+
+What is DFS?
+
+Depth First Search algorithm.
+
+DFS uses which data structure?
+
+Stack or recursion.
+
+What is BFS?
+
+Breadth First Search algorithm.
+
+BFS uses which data structure?
+
+Queue.
+
+BFS advantage?
+
+Finds shortest path in unweighted graph.
+
+DFS disadvantage?
+
+May not give optimal solution.
+
+Difference between DFS and BFS?
+
+DFS goes deep, BFS goes level-wise.
+
+What is A* algorithm?
+
+Heuristic algorithm for optimal path finding.
+
+Formula of A*?
+
+f(n)=g(n)+h(n)
+
+f(n)=g(n)+h(n)
+
+What is g(n)?
+
+Actual cost from start node.
+
+What is h(n)?
+
+Estimated cost to goal.
+
+What is f(n)?
+
+Total estimated cost.
+
+What is Greedy Best First Search?
+
+Search using only heuristic value.
+
+What is CSP?
+
+Constraint Satisfaction Problem.
+
+Examples of CSP?
+
+N-Queens and Graph Coloring.
+
+What is Backtracking?
+
+Recursive technique that removes invalid choices.
+
+What is Branch and Bound?
+
+Optimization technique using pruning.
+
+Difference between Backtracking and Branch & Bound?
+
+Branch & Bound uses bounds for optimization.
+
+Goal of N-Queens problem?
+
+Place queens without attacking each other.
+
+Constraint in Graph Coloring?
+
+Adjacent nodes must have different colors.
+
+What is Minimax algorithm?
+
+Decision-making algorithm in games.
+
+What is Alpha-Beta pruning?
+
+Optimization of Minimax algorithm.
+
+What is Expert System?
+
+AI system that mimics human expert.
+
+Components of Expert System?
+
+Knowledge base and inference engine.
+
+What is Forward Chaining?
+
+Facts to goal reasoning.
+
+What is Backward Chaining?
+
+Goal to facts reasoning.
+
+What is NLP?
+
+Natural Language Processing.
+
+Purpose of NLP?
+
+Understanding human language.
+
+What is chatbot?
+
+AI application that interacts with users.
+
+What is Machine Learning?
+
+Learning from data without explicit programming.
+
+What is reasoning?
+
+Logical decision-making process.
+
+What is Reactive Agent?
+
+Agent reacting only to current environment.
+
+What is knowledge representation?
+
+Method of storing knowledge in AI.
+
+What is Turing Test?
+
+Test to check machine intelligence.
+
+Father of AI?
+
+John McCarthy.
+
+What is ontology in AI?
+
+Structured representation of knowledge.
+
+What is learning agent?
+
+Agent that improves from experience.
+
+What is utility-based agent?
+
+Agent selecting best possible action.
+
+What is goal-based agent?
+
+Agent working toward a specific goal.
+
+What is semantic network?
+
+Graph structure representing knowledge.
+
+What is production rule?
+
+IF-THEN rule used in AI systems.
+
+What is pruning?
+
+Eliminating unnecessary branches in search tree.
+
+What is local search?
+
+Search using neighboring states only.
+
+What is simulated annealing?
+
+Probabilistic optimization technique.
+
+What is genetic algorithm?
+
+Optimization inspired by natural evolution.
+
+What is neural network?
+
+AI model inspired by human brain.
+
+What is deep learning?
+
+Multi-layer neural network learning.
+
+What is supervised learning?
+
+Learning using labeled data.
+
+What is unsupervised learning?
+
+Learning without labeled data.
+
+What is reinforcement learning?
+
+Learning using rewards and punishments.

@@ -1,0 +1,156 @@
+AWS EC2 + Apache Web Server Viva Questions (One-Liners)
+🔹 Basic AWS Questions
+What is AWS?
+
+Amazon Web Services is a cloud computing platform.
+
+What is EC2?
+
+EC2 is a virtual server service provided by AWS.
+
+EC2 stands for?
+
+Elastic Compute Cloud.
+
+What is cloud computing?
+
+Delivering computing services over the internet.
+
+What is an instance?
+
+A virtual machine running in AWS.
+
+🔹 EC2 Instance Questions
+Which instance type did you use?
+
+t3.micro.
+
+Why t3.micro?
+
+It is free-tier eligible and lightweight.
+
+What is AMI?
+
+Amazon Machine Image used to launch instances.
+
+Which OS did you use?
+
+Ubuntu Server 24.04.
+
+What is Public IPv4 Address?
+
+Public IP used to access EC2 over internet.
+
+🔹 Key Pair Questions
+What is key pair?
+
+Security credentials used to access EC2 instance.
+
+Why use .pem file?
+
+Used for secure SSH authentication.
+
+What happens if key is lost?
+
+Instance access becomes difficult.
+
+What is RSA?
+
+Encryption algorithm used for secure authentication.
+
+🔹 Security Group Questions
+What is Security Group?
+
+Virtual firewall controlling inbound/outbound traffic.
+
+Why allow port 22?
+
+For SSH remote login.
+
+Why allow port 80?
+
+For HTTP web access.
+
+What is SSH?
+
+Secure Shell protocol for remote access.
+
+HTTP port number?
+
+Port 80.
+
+🔹 Apache Questions
+What is Apache?
+
+Open-source web server software.
+
+Why install Apache?
+
+To host and display web pages.
+
+Command to install Apache?
+
+sudo apt install apache2 -y
+
+Command to start Apache?
+
+sudo systemctl start apache2
+
+Command to enable Apache?
+
+sudo systemctl enable apache2
+
+🔹 Linux Command Questions
+sudo means?
+
+Execute command with administrator privileges.
+
+apt update purpose?
+
+Updates package list.
+
+cd /var/www/html purpose?
+
+Moves to Apache web directory.
+
+nano command?
+
+Text editor in Linux.
+
+🔹 Website Hosting Questions
+Where is webpage stored?
+
+/var/www/html/index.html
+
+How did you access website?
+
+Using public IPv4 address in browser.
+
+Default Apache page file?
+
+index.html
+
+What type of application did you deploy?
+
+Simple HTML web application.
+
+🔹 Practical/Conceptual Questions
+What is IaaS?
+
+Infrastructure as a Service.
+
+AWS EC2 belongs to which cloud model?
+
+IaaS.
+
+Advantage of EC2?
+
+Scalable and flexible virtual servers.
+
+Why use cloud instead of physical server?
+
+Lower cost and easy scalability.
+
+🧠 Strong Final Viva Line
+
+“We created an EC2 virtual server, configured Apache web server, deployed an HTML application, and accessed it using the public IP address.”

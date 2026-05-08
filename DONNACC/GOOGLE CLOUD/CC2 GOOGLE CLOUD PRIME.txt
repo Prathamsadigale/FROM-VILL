@@ -1,0 +1,297 @@
+installation and configure Google App Engine. (Prime Numbers).
+
+
+step 1:
+
+go to the browser then search google cloud --https://www.google.com/aclk?sa=L&ai=DChsSEwjIs4yf6KmUAxXOhGYCHVfgBqsYACICCAEQABoCc20&ae=2&co=1&ase=2&gclid=Cj0KCQjwk_bPBhDXARIsACiq8R3sOhg3TBbzn2sUJIUkRZxzKabiNg2BNSimgOSjrEV8i_yU1TmJSQwaAkyKEALw_wcB&ei=Yuf9aYrtCOyfnesP19Xc4QE&cid=CAAS0gHkaEaWaEWHzlGa_eGM_8SMYuOXFYGYwOjqMRZT6id5a8Q8QutJt-mm_gZeLOwbRAk2qbLtdhywxONPjNxq-MADMm-vWRyByoCfFm8R-k13cXpv7Uf6CsMOp7iJnYQNHQcyEN-UwDAIbuXAs8ymY7jIS9kzCPp1QzM3dee3PlDC_XeT7dffzefqohpRTVAEbph2RuiE4U9y4_3TJSSFWuPwb1eYns1sDDjR1lOGRrjxnEklqoj44rQuh5G-YtpMs5bfA1BP0GQ8jfMtXWWm5utnFaY&cce=2&category=acrcp_v1_71&sig=AOD64_1656c9oOkuoKUAOprDz_GyckkaSQ&q&sqi=2&nis=4&adurl&ved=2ahUKEwiKpoWf6KmUAxXsT2cHHdcqNxwQ0Qx6BAgMEAE
+
+
+step 2 : go the website e then click on the console option present at the top right 
+
+step 3:
+
+if the project is not created then create one iun google cloud 
+
+step 4 :
+
+no w go the git hub repo and create a repo of any random name ex: TEB
+in the repo add the code of the prime number 
+
+step 5:
+after completing the work of repo go to the google console 
+
+
+type this commands 
+
+git clone https://github.com/Prathamsadigale/bhai2.git
+
+after this enter [ls]
+
+choose your git repo then type 
+
+cd repo name 
+
+step6: 
+after being in your repo type - [ls] 
+
+you will all the executable files in your repo 
+
+for python entre command --- python3  filename.py
+
+step 7:
+
+after executing the current code of python if you have add ed a newm code in your repo and you want to configure if you ls again in your repo name but it does t show then these commands 
+
+
+git status
+git branch  
+git pull 
+
+it will update your repo and show the list of codes again 
+
+
+note :: while yo are running these above commands keep in mind you have to run this command inside your git repo that has to be updated
+
+
+
+
+code for prime numbers :
+
+
+
+# Prime Number Program
+
+num = int(input("Enter a number: "))
+
+if num <= 1:
+    print(num, "is NOT a Prime Number")
+
+else:
+
+    for i in range(2, num):
+
+        if num % i == 0:
+            print(num, "is NOT a Prime Number")
+            break
+
+    else:
+        print(num, "is a Prime Number")
+
+
+🎯 AIM
+To install and configure Google App Engine environment and execute a Prime Number Python program using Google Cloud Console and GitHub repository.
+
+🎯 OBJECTIVE
+
+
+To understand Google Cloud Console and App Engine environment
+
+
+To learn GitHub repository integration with Google Cloud
+
+
+To execute Python programs using Cloud Shell
+
+
+To understand prime number logic in Python
+
+
+To perform cloud-based code execution and repository management
+
+
+
+📘 THEORY
+Google App Engine is a cloud computing platform provided by Google Cloud that allows developers to run applications on Google-managed infrastructure. It supports multiple programming languages including Python.
+In this practical, Google Cloud Console and Cloud Shell were used to execute Python programs stored in a GitHub repository. Git commands such as git clone, git pull, and git status were used for repository management.
+The Prime Number program checks whether a number is divisible only by 1 and itself. The logic uses loops and conditional statements to determine whether the entered number is prime or not.
+This practical demonstrates cloud configuration, GitHub integration, command-line operations, and Python program execution on cloud environment.
+
+✅ CONCLUSION
+Google App Engine environment and Cloud Shell were successfully configured. A GitHub repository containing the Prime Number Python program was cloned and executed successfully using Python commands in Google Cloud Console. This practical provided hands-on experience with cloud computing, GitHub integration, Linux commands, and Python programming.
+
+🧠 LINE-BY-LINE CODE EXPLANATION
+
+🔹 Comment Line
+# Prime Number Program
+👉 Comment describing the program.
+
+🔹 User Input
+num = int(input("Enter a number: "))
+👉 Takes number input from user.
+👉 int() converts input into integer.
+
+🔹 Check Number Less Than or Equal to 1
+if num <= 1:
+👉 Numbers less than or equal to 1 are not prime.
+
+🔹 Print Not Prime
+print(num, "is NOT a Prime Number")
+👉 Displays not prime message.
+
+🔹 Else Block
+else:
+👉 Executes if number is greater than 1.
+
+🔹 Loop from 2 to num-1
+for i in range(2, num):
+👉 Checks divisibility of number.
+
+🔹 Divisibility Check
+if num % i == 0:
+👉 % checks remainder.
+👉 If remainder is 0 → divisible.
+
+🔹 Print Not Prime
+print(num, "is NOT a Prime Number")
+👉 Number is not prime.
+
+🔹 Break Loop
+break
+👉 Stops loop immediately.
+
+🔹 Else of Loop
+else:
+👉 Executes if loop finishes without break.
+
+🔹 Print Prime Number
+print(num, "is a Prime Number")
+👉 Displays prime number message.
+
+📐 IMPORTANT RELATIONS / FORMULAS
+🔹 Prime Number Condition
+A prime number has exactly two factors:
+
+
+1
+
+
+Itself
+
+
+
+🔹 Modulus Operation
+num%i=0num\%i = 0num%i=0
+👉 Means number is divisible.
+
+🧠 IMPORTANT VIVA QUESTIONS
+🔹 Google Cloud Questions
+
+
+What is Google App Engine?
+
+
+
+Platform for hosting applications on Google Cloud.
+
+
+
+What is Cloud Shell?
+
+
+
+Browser-based Linux terminal.
+
+
+
+Purpose of GitHub?
+
+
+
+Code hosting and version control.
+
+
+
+Command to clone repo?
+
+
+
+git clone
+
+
+
+Command to update repo?
+
+
+
+git pull
+
+
+🔹 Python Questions
+
+
+What is prime number?
+
+
+
+Number divisible only by 1 and itself.
+
+
+
+What does % operator do?
+
+
+
+Returns remainder.
+
+
+
+Purpose of break?
+
+
+
+Stops loop execution.
+
+
+
+Purpose of range()?
+
+
+
+Generates sequence of numbers.
+
+
+
+What is input()?
+
+
+
+Takes user input.
+
+
+🔹 Linux / Git Questions
+
+
+ls command purpose?
+
+
+
+Shows files and folders.
+
+
+
+cd command purpose?
+
+
+
+Changes directory.
+
+
+
+git status purpose?
+
+
+
+Shows repository changes.
+
+
+
+python3 filename.py purpose?
+
+
+
+Executes Python program.
+
+
+⚡ Strong Viva Closing Line
+
+“The practical demonstrated successful configuration of Google Cloud environment and execution of a Prime Number Python program using GitHub repository integration and Cloud Shell commands.”

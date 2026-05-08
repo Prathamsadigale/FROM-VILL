@@ -1,0 +1,387 @@
+Implement a solution for a Constraint Satisfaction Problem using Branch and
+Bound.
+
+
+CODE :
+
+# N-Queens Problem (Backtracking)
+def solve_nqueens(n):
+    solutions = []
+    def place(row, cols, diag1, diag2, board):
+        if row == n:
+            solutions.append(board[:])
+            return
+        for col in range(n):
+            if col in cols or (row - col) in diag1 or (row + col) in diag2:
+                continue
+            board.append(col)
+            place(row + 1, cols | {col},
+                  diag1 | {row - col}, diag2 | {row + col}, board)
+            board.pop()                       # backtrack
+    place(0, set(), set(), set(), [])
+    return solutions
+ 
+def print_board(solution, n):
+    for col in solution:
+        print(". " * col + "Q " + ". " * (n - col - 1))
+    print()
+ 
+# Graph Coloring Problem (Backtracking)
+def graph_coloring(graph, m):
+    nodes = list(graph)
+    color = {}
+    def assign(i):
+        if i == len(nodes):
+            return True
+        node = nodes[i]
+        for c in range(1, m + 1):
+            if all(color.get(nb) != c for nb in graph[node]):
+                color[node] = c
+                if assign(i + 1):
+                    return True
+                del color[node]               # backtrack
+        return False
+    return color if assign(0) else None
+ 
+if __name__ == "__main__":
+    n = 4
+    solutions = solve_nqueens(n)
+    print(f"{n}-Queens: {len(solutions)} solutions found.")
+    print("First solution:")
+    print_board(solutions[0], n)
+ 
+    graph = {0:[1,2,3], 1:[0,2], 2:[0,1,3], 3:[0,2]}
+    result = graph_coloring(graph, 3)
+    print("Graph Coloring with 3 colors:", result)
+
+
+
+AIM
+
+To implement Constraint Satisfaction Problems (CSP) using Backtracking technique for solving the N-Queens Problem and Graph Coloring Problem in Python.
+
+🎯 OBJECTIVE
+To understand Constraint Satisfaction Problems (CSP)
+To implement Backtracking algorithm
+To solve N-Queens problem using constraints
+To solve Graph Coloring problem using backtracking
+To study recursive problem-solving techniques in AI
+📘 THEORY
+
+Constraint Satisfaction Problems (CSP) are problems where variables must be assigned values while satisfying given constraints. Backtracking is a recursive search technique used to solve CSPs by trying possible solutions and undoing invalid choices.
+
+The N-Queens problem involves placing N queens on an N×N chessboard such that no two queens attack each other. Constraints include:
+
+No same row
+No same column
+No same diagonal
+
+The Graph Coloring problem assigns colors to graph vertices such that no two adjacent vertices have the same color.
+
+In this practical, Python recursion and backtracking were used to efficiently explore valid configurations and reject invalid states.
+
+✅ CONCLUSION
+
+The N-Queens and Graph Coloring problems were successfully solved using Backtracking technique in Python. The algorithm explored possible configurations recursively and backtracked whenever constraints were violated. This practical helped in understanding CSPs, recursive search, graph coloring, and optimization techniques used in Artificial Intelligence.
+
+🧠 LINE-BY-LINE CODE EXPLANATION
+==================================================
+🔹 N-QUEENS PROBLEM
+==================================================
+🔹 Function Definition
+def solve_nqueens(n):
+
+👉 Defines function for solving N-Queens.
+
+🔹 Store Solutions
+solutions = []
+
+👉 Stores all valid board configurations.
+
+🔹 Recursive Function
+def place(row, cols, diag1, diag2, board):
+
+👉 Recursive backtracking function.
+
+Parameters:
+
+row → current row
+cols → occupied columns
+diag1 → occupied left diagonals
+diag2 → occupied right diagonals
+board → queen positions
+🔹 Base Condition
+if row == n:
+
+👉 All queens placed successfully.
+
+🔹 Save Solution
+solutions.append(board[:])
+
+👉 Copies valid board into solutions list.
+
+🔹 Return
+return
+
+👉 Stops recursion.
+
+🔹 Traverse Columns
+for col in range(n):
+
+👉 Tries placing queen in each column.
+
+🔹 Constraint Check
+if col in cols or (row - col) in diag1 or (row + col) in diag2:
+
+👉 Checks:
+
+Same column
+Same left diagonal
+Same right diagonal
+🔹 Skip Invalid Position
+continue
+
+👉 Ignores invalid placement.
+
+🔹 Place Queen
+board.append(col)
+
+👉 Adds queen position.
+
+🔹 Recursive Call
+place(row + 1, cols | {col},
+      diag1 | {row - col},
+      diag2 | {row + col},
+      board)
+
+👉 Moves to next row with updated constraints.
+
+🔹 Backtracking
+board.pop()
+
+👉 Removes queen when path invalid.
+
+🗣️ Viva:
+
+“Backtracking undoes previous step when constraint fails.”
+
+🔹 Start Recursion
+place(0, set(), set(), set(), [])
+
+👉 Starts from row 0.
+
+🔹 Return Solutions
+return solutions
+
+👉 Returns all valid boards.
+
+==================================================
+🔹 PRINT BOARD FUNCTION
+==================================================
+🔹 Function Definition
+def print_board(solution, n):
+
+👉 Prints chessboard.
+
+🔹 Traverse Solution
+for col in solution:
+
+👉 Reads queen positions.
+
+🔹 Print Board
+print(". " * col + "Q " + ". " * (n - col - 1))
+
+👉 Prints:
+
+Q → Queen
+. → Empty space
+==================================================
+🔹 GRAPH COLORING PROBLEM
+==================================================
+🔹 Function Definition
+def graph_coloring(graph, m):
+
+👉 Solves graph coloring problem.
+
+Parameters:
+
+graph → adjacency list
+m → number of colors
+🔹 Node List
+nodes = list(graph)
+
+👉 Stores graph nodes.
+
+🔹 Color Dictionary
+color = {}
+
+👉 Stores assigned colors.
+
+🔹 Recursive Function
+def assign(i):
+
+👉 Assigns colors recursively.
+
+🔹 Base Condition
+if i == len(nodes):
+
+👉 All nodes colored.
+
+🔹 Return True
+return True
+
+👉 Valid coloring found.
+
+🔹 Current Node
+node = nodes[i]
+
+👉 Selects node.
+
+🔹 Try Colors
+for c in range(1, m + 1):
+
+👉 Tries all colors.
+
+🔹 Constraint Check
+if all(color.get(nb) != c for nb in graph[node]):
+
+👉 Adjacent nodes must not have same color.
+
+🔹 Assign Color
+color[node] = c
+
+👉 Assigns color.
+
+🔹 Recursive Call
+if assign(i + 1):
+
+👉 Colors next node.
+
+🔹 Return True
+return True
+
+👉 Valid coloring found.
+
+🔹 Backtracking
+del color[node]
+
+👉 Removes invalid color assignment.
+
+🔹 Return False
+return False
+
+👉 No valid color found.
+
+🔹 Start Coloring
+return color if assign(0) else None
+
+👉 Starts from first node.
+
+==================================================
+🔹 MAIN PROGRAM
+==================================================
+🔹 Main Condition
+if __name__ == "__main__":
+
+👉 Executes main program.
+
+🔹 N Value
+n = 4
+
+👉 4-Queens problem.
+
+🔹 Solve N-Queens
+solutions = solve_nqueens(n)
+
+👉 Finds solutions.
+
+🔹 Print First Solution
+print_board(solutions[0], n)
+
+👉 Displays board.
+
+🔹 Graph Definition
+graph = {0:[1,2,3], 1:[0,2], 2:[0,1,3], 3:[0,2]}
+
+👉 Defines graph connections.
+
+🔹 Solve Graph Coloring
+result = graph_coloring(graph, 3)
+
+👉 Uses 3 colors.
+
+🔹 Print Result
+print(result)
+
+👉 Displays assigned colors.
+
+📐 IMPORTANT RELATIONS / CONCEPTS
+🔹 Constraint Satisfaction Problem
+
+Variables + Domain + Constraints
+
+🔹 Backtracking Process
+
+Try → Check → Backtrack → Retry
+
+🔹 N-Queens Constraints
+No same row
+No same column
+No same diagonal
+🔹 Graph Coloring Constraint
+
+Adjacent nodes must have different colors.
+
+🧠 IMPORTANT VIVA QUESTIONS
+🔹 CSP Questions
+What is CSP?
+
+Problem solved using constraints and variable assignments.
+
+Examples of CSP?
+
+N-Queens and Graph Coloring.
+
+🔹 Backtracking Questions
+What is Backtracking?
+
+Recursive technique that undoes invalid choices.
+
+Why use backtracking?
+
+To reduce unnecessary computations.
+
+Backtracking works on?
+
+Depth First Search approach.
+
+🔹 N-Queens Questions
+Goal of N-Queens?
+
+Place queens without attacking each other.
+
+Why diagonal checking required?
+
+Queens attack diagonally.
+
+🔹 Graph Coloring Questions
+Goal of Graph Coloring?
+
+Adjacent nodes must have different colors.
+
+What is chromatic number?
+
+Minimum colors needed to color graph.
+
+🔹 Python Questions
+What is recursion?
+
+Function calling itself.
+
+What is set() used for?
+
+Fast constraint checking.
+
+⚡ Strong Viva Closing Line
+
+“The practical demonstrated solving Constraint Satisfaction Problems using Backtracking by applying recursive search and constraint validation techniques.”

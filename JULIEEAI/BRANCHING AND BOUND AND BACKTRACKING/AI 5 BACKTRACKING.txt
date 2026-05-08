@@ -1,0 +1,343 @@
+Implement a solution for a Constraint Satisfaction Problem using bACKTRACKING
+
+
+
+CODE :
+
+# N-Queens Problem using Backtracking
+# Constraint Satisfaction Problem (CSP)
+
+def print_board(board, n):
+
+    for i in range(n):
+
+        for j in range(n):
+
+            if board[i] == j:
+                print("Q", end=" ")
+
+            else:
+                print("_", end=" ")
+
+        print()
+
+    print()
+
+
+# check whether queen can be placed
+def is_safe(board, row, col):
+
+    for i in range(row):
+
+        # same column
+        if board[i] == col:
+            return False
+
+        # left diagonal
+        if board[i] - i == col - row:
+            return False
+
+        # right diagonal
+        if board[i] + i == col + row:
+            return False
+
+    return True
+
+
+# solve function
+def solve(board, row, n):
+
+    # all queens placed
+    if row == n:
+
+        print("Solution Found:\n")
+
+        print_board(board, n)
+
+        return
+
+    # try every column
+    for col in range(n):
+
+        if is_safe(board, row, col):
+
+            # place queen
+            board[row] = col
+
+            # go to next row
+            solve(board, row + 1, n)
+
+            # remove queen (backtrack)
+            board[row] = -1
+
+
+# MAIN
+n = 4
+
+board = [-1] * n
+
+print("Solving", n, "Queens Problem...\n")
+
+solve(board, 0, n)
+
+
+AIM
+
+To solve the N-Queens Problem using Backtracking technique as a Constraint Satisfaction Problem (CSP) in Python.
+
+🎯 OBJECTIVE
+To understand Constraint Satisfaction Problems (CSP)
+To implement Backtracking algorithm using recursion
+To solve the N-Queens problem efficiently
+To apply constraints for safe queen placement
+To study recursive and intelligent search techniques in AI
+📘 THEORY
+
+The N-Queens Problem is a classical Constraint Satisfaction Problem (CSP) in Artificial Intelligence. The objective is to place N queens on an N×N chessboard such that no two queens attack each other.
+
+The constraints are:
+
+No two queens in same row
+No two queens in same column
+No two queens on same diagonal
+
+Backtracking is a recursive problem-solving technique used to explore possible solutions. If a placement violates constraints, the algorithm backtracks and tries another position.
+
+In this practical, Python recursion was used to place queens row by row while checking safe positions using constraint validation.
+
+✅ CONCLUSION
+
+The N-Queens problem was successfully solved using the Backtracking algorithm in Python. Queens were placed on the chessboard while satisfying all constraints related to rows, columns, and diagonals. The practical helped in understanding recursive algorithms, constraint satisfaction problems, and intelligent search techniques used in Artificial Intelligence.
+
+🧠 LINE-BY-LINE CODE EXPLANATION
+==================================================
+🔹 PRINT BOARD FUNCTION
+==================================================
+🔹 Function Definition
+def print_board(board, n):
+
+👉 Function used to print chessboard.
+
+🔹 Traverse Rows
+for i in range(n):
+
+👉 Iterates through rows.
+
+🔹 Traverse Columns
+for j in range(n):
+
+👉 Iterates through columns.
+
+🔹 Check Queen Position
+if board[i] == j:
+
+👉 Checks whether queen exists at position.
+
+🔹 Print Queen
+print("Q", end=" ")
+
+👉 Displays queen.
+
+🔹 Print Empty Space
+print("_", end=" ")
+
+👉 Displays empty square.
+
+🔹 Move to Next Line
+print()
+
+👉 Prints next row.
+
+==================================================
+🔹 SAFE POSITION CHECK
+==================================================
+🔹 Function Definition
+def is_safe(board, row, col):
+
+👉 Checks whether queen can be placed safely.
+
+🔹 Traverse Previous Rows
+for i in range(row):
+
+👉 Checks all previously placed queens.
+
+🔹 Same Column Check
+if board[i] == col:
+
+👉 Prevents queens in same column.
+
+🔹 Return False
+return False
+
+👉 Invalid placement.
+
+🔹 Left Diagonal Check
+if board[i] - i == col - row:
+
+👉 Checks left diagonal attack.
+
+🔹 Right Diagonal Check
+if board[i] + i == col + row:
+
+👉 Checks right diagonal attack.
+
+🔹 Return True
+return True
+
+👉 Position is safe.
+
+==================================================
+🔹 SOLVE FUNCTION
+==================================================
+🔹 Function Definition
+def solve(board, row, n):
+
+👉 Main recursive backtracking function.
+
+🔹 Base Condition
+if row == n:
+
+👉 All queens placed successfully.
+
+🔹 Print Solution
+print("Solution Found:\n")
+
+👉 Displays solution message.
+
+🔹 Print Board
+print_board(board, n)
+
+👉 Prints final arrangement.
+
+🔹 Return
+return
+
+👉 Ends recursion.
+
+🔹 Try All Columns
+for col in range(n):
+
+👉 Tries placing queen in every column.
+
+🔹 Check Safe Position
+if is_safe(board, row, col):
+
+👉 Calls constraint checking function.
+
+🔹 Place Queen
+board[row] = col
+
+👉 Places queen.
+
+🔹 Recursive Call
+solve(board, row + 1, n)
+
+👉 Moves to next row.
+
+🔹 Backtracking
+board[row] = -1
+
+👉 Removes queen if path fails.
+
+🗣️ Viva:
+
+“Backtracking undoes invalid choices and tries another possibility.”
+
+==================================================
+🔹 MAIN PROGRAM
+==================================================
+🔹 Number of Queens
+n = 4
+
+👉 Solves 4-Queens problem.
+
+🔹 Initialize Board
+board = [-1] * n
+
+👉 Creates empty board.
+
+🔹 Print Message
+print("Solving", n, "Queens Problem...\n")
+
+👉 Displays start message.
+
+🔹 Call Solve Function
+solve(board, 0, n)
+
+👉 Starts solving from row 0.
+
+📐 IMPORTANT RELATIONS / CONCEPTS
+🔹 Constraint Satisfaction Problem
+
+Variables + Domain + Constraints
+
+🔹 Backtracking Process
+
+Try → Check → Backtrack → Retry
+
+🔹 N-Queens Constraints
+No same row
+No same column
+No same diagonal
+🔹 Diagonal Relations
+Left Diagonal
+
+board[i]−i=col−row
+
+Right Diagonal
+
+board[i]+i=col+row
+
+🧠 IMPORTANT VIVA QUESTIONS
+🔹 N-Queens Questions
+What is N-Queens problem?
+
+Place N queens so that no queens attack each other.
+
+Which AI category does it belong to?
+
+Constraint Satisfaction Problem (CSP).
+
+What technique is used?
+
+Backtracking.
+
+Why use recursion?
+
+To explore solutions row by row.
+
+🔹 Backtracking Questions
+What is backtracking?
+
+Recursive technique that removes invalid solutions.
+
+Main advantage of backtracking?
+
+Reduces unnecessary computations.
+
+Backtracking follows which traversal?
+
+Depth First Search (DFS).
+
+🔹 Constraint Questions
+Why check diagonals?
+
+Queens attack diagonally.
+
+Why check previous rows only?
+
+Queens are placed row by row.
+
+🔹 Python Questions
+What does [-1] * n do?
+
+Creates empty board list.
+
+What is recursion?
+
+Function calling itself.
+
+⚡ Strong Viva Closing Line
+
+“The practical demonstrated solving the N-Queens Constraint Satisfaction Problem using recursive backtracking and constraint validation techniques.”
+
